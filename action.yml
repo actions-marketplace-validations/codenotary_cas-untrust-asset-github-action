@@ -18,7 +18,6 @@ runs:
   image: 'docker://codenotary/cas:bom-docker'
   args:
     - untrust
-    - ${{ inputs.extra_flag }}
     - ${{ inputs.asset }}
     - --api-key=${{ inputs.cas_api_key }}
     - --host=cas.codenotary.com
