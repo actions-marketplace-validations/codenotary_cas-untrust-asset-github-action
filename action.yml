@@ -1,0 +1,24 @@
+name: 'cas untrust'
+description: 'Uses the cas CLI to untrust digital assets, docker images and their SBOM'
+branding:
+  icon: 'lock'
+  color: 'green'
+inputs:
+  asset:
+    description: 'Asset to untrust'
+    required: true
+  cas_api_key:
+    description: 'API Key provided upon signing up through cas.codenotary.com'
+    required: true
+  extra_flag:
+    required: false
+    default: ''
+runs:
+  using: 'docker'
+  image: 'docker://codenotary/cas:bom-docker'
+  args:
+    - untrust
+    - ${{ inputs.extra_flag }}
+    - ${{ inputs.asset }}
+    - --api-key=${{ inputs.cas_api_key }}
+    - --host=cas.codenotary.com

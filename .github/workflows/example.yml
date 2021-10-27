@@ -1,0 +1,23 @@
+name: untrust a docker image sbom
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  untrust-docker-image-sbom:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull image
+        run: docker pull codenotary/cas:bom-docker
+        shell: bash
+
+
+      - name: Untrust Docker image
+        #--> Run the GitHub action
+        #
+        uses: codenotary/cas-untrust-asset-github-action@main
+        with:
+          # Untrust the image we pulled in the first step 
+          asset: docker://codenotary/cas:bom-docker
+          cas_api_key: ${{ secrets.CAS_API_KEY }}
