@@ -1,6 +1,6 @@
 # cas-untrust-asset-github-action
 
-GitHub action that uses the **[cas](https://github.com/codenotary/cas)** tool to untrust digital assets and docker images. 
+GitHub action that uses the **[cas](https://cas.codenotary.com)** tool to untrust digital assets and docker images. 
 
 ## How to use it
 
